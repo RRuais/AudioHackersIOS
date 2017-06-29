@@ -1,0 +1,6 @@
+framework module Pods_AudioHackers {
+  umbrella header "Pods-AudioHackers-umbrella.h"
+
+  export *
+  module * { export * }
+}

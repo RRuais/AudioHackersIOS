@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>960708295743-o73eb1e14d917ob14ftnqainjb178np3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.960708295743-o73eb1e14d917ob14ftnqainjb178np3</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBk71_dGWafbPG3nNAWXb7IKzWL52wuxJg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>960708295743</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>ruais.AudioHackers</string>
+	<key>PROJECT_ID</key>
+	<string>audiohackers-18017</string>
+	<key>STORAGE_BUCKET</key>
+	<string>audiohackers-18017.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:960708295743:ios:570a8a17d4c84b8a</string>
+	<key>DATABASE_URL</key>
+	<string>https://audiohackers-18017.firebaseio.com</string>
+</dict>
+</plist>

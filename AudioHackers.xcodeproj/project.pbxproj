@@ -12,9 +12,26 @@
 		849E61AD1EDFD95D00B202F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849E61AB1EDFD95D00B202F7 /* Main.storyboard */; };
 		849E61AF1EDFD95D00B202F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849E61AE1EDFD95D00B202F7 /* Assets.xcassets */; };
 		849E61B21EDFD95D00B202F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849E61B01EDFD95D00B202F7 /* LaunchScreen.storyboard */; };
+		849E61BA1EDFE11F00B202F7 /* GuessFrequencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E61B91EDFE11F00B202F7 /* GuessFrequencyViewController.swift */; };
+		849E61BE1EE12C1F00B202F7 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E61BD1EE12C1F00B202F7 /* GameController.swift */; };
+		849E61C01EE2A35400B202F7 /* GuessFreqHighScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E61BF1EE2A35400B202F7 /* GuessFreqHighScoreViewController.swift */; };
+		849E61CD1EE4AEAF00B202F7 /* ProgressBarDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E61CC1EE4AEAF00B202F7 /* ProgressBarDraw.swift */; };
+		84BDE7E41EE91152009E7C74 /* AudioPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BDE7E31EE91152009E7C74 /* AudioPlayerController.swift */; };
+		84BDE7E61EEA364A009E7C74 /* GuessEqHighScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BDE7E51EEA364A009E7C74 /* GuessEqHighScoreViewController.swift */; };
+		84BDE7E81EEA43DE009E7C74 /* HighScoreTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BDE7E71EEA43DE009E7C74 /* HighScoreTabBarController.swift */; };
+		84BDE7EA1EECDBFF009E7C74 /* EqInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BDE7E91EECDBFF009E7C74 /* EqInstructionsViewController.swift */; };
+		84BDE7EC1EEF5535009E7C74 /* internetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BDE7EB1EEF5535009E7C74 /* internetConnection.swift */; };
+		84BDE7EE1EEFC88F009E7C74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84BDE7ED1EEFC88F009E7C74 /* GoogleService-Info.plist */; };
+		84BDE7F01EF1C8B8009E7C74 /* mainSong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84BDE7EF1EF1C8B8009E7C74 /* mainSong.wav */; };
+		84F14D331EE73D55000B1F6F /* GFInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F14D321EE73D55000B1F6F /* GFInstructionsViewController.swift */; };
+		84F14D371EE76AA0000B1F6F /* EQGuessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F14D361EE76AA0000B1F6F /* EQGuessViewController.swift */; };
+		84F14D3C1EE78EA7000B1F6F /* SpotifySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F14D3B1EE78EA7000B1F6F /* SpotifySearchViewController.swift */; };
+		84F14D3F1EE7909A000B1F6F /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F14D3E1EE7909A000B1F6F /* SWRevealViewController.m */; };
+		8A8132ADBD501BDF40D80501 /* Pods_AudioHackers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 907B4B4DBE415599DC893FC4 /* Pods_AudioHackers.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		29BF83AC7C26FD626B89CDF4 /* Pods-AudioHackers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioHackers.release.xcconfig"; path = "Pods/Target Support Files/Pods-AudioHackers/Pods-AudioHackers.release.xcconfig"; sourceTree = "<group>"; };
 		849E61A41EDFD95D00B202F7 /* AudioHackers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioHackers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849E61A71EDFD95D00B202F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849E61A91EDFD95D00B202F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +39,26 @@
 		849E61AE1EDFD95D00B202F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		849E61B11EDFD95D00B202F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		849E61B31EDFD95D00B202F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		849E61B91EDFE11F00B202F7 /* GuessFrequencyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuessFrequencyViewController.swift; sourceTree = "<group>"; };
+		849E61BD1EE12C1F00B202F7 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		849E61BF1EE2A35400B202F7 /* GuessFreqHighScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuessFreqHighScoreViewController.swift; sourceTree = "<group>"; };
+		849E61C61EE37C9A00B202F7 /* AudioHackers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AudioHackers-Bridging-Header.h"; sourceTree = "<group>"; };
+		849E61C91EE37E1000B202F7 /* AudioHackers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AudioHackers.entitlements; sourceTree = "<group>"; };
+		849E61CC1EE4AEAF00B202F7 /* ProgressBarDraw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBarDraw.swift; sourceTree = "<group>"; };
+		84BDE7E31EE91152009E7C74 /* AudioPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerController.swift; sourceTree = "<group>"; };
+		84BDE7E51EEA364A009E7C74 /* GuessEqHighScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuessEqHighScoreViewController.swift; sourceTree = "<group>"; };
+		84BDE7E71EEA43DE009E7C74 /* HighScoreTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreTabBarController.swift; sourceTree = "<group>"; };
+		84BDE7E91EECDBFF009E7C74 /* EqInstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EqInstructionsViewController.swift; sourceTree = "<group>"; };
+		84BDE7EB1EEF5535009E7C74 /* internetConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = internetConnection.swift; sourceTree = "<group>"; };
+		84BDE7ED1EEFC88F009E7C74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84BDE7EF1EF1C8B8009E7C74 /* mainSong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mainSong.wav; sourceTree = "<group>"; };
+		84F14D321EE73D55000B1F6F /* GFInstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GFInstructionsViewController.swift; sourceTree = "<group>"; };
+		84F14D361EE76AA0000B1F6F /* EQGuessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EQGuessViewController.swift; sourceTree = "<group>"; };
+		84F14D3B1EE78EA7000B1F6F /* SpotifySearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifySearchViewController.swift; sourceTree = "<group>"; };
+		84F14D3D1EE7909A000B1F6F /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		84F14D3E1EE7909A000B1F6F /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		907B4B4DBE415599DC893FC4 /* Pods_AudioHackers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioHackers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC69A904FC0AB3E1DE0C274C /* Pods-AudioHackers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioHackers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AudioHackers/Pods-AudioHackers.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +66,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A8132ADBD501BDF40D80501 /* Pods_AudioHackers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45E48281C3D9B7E433E36078 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EC69A904FC0AB3E1DE0C274C /* Pods-AudioHackers.debug.xcconfig */,
+				29BF83AC7C26FD626B89CDF4 /* Pods-AudioHackers.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		849E619B1EDFD95D00B202F7 = {
 			isa = PBXGroup;
 			children = (
 				849E61A61EDFD95D00B202F7 /* AudioHackers */,
 				849E61A51EDFD95D00B202F7 /* Products */,
+				45E48281C3D9B7E433E36078 /* Pods */,
+				98B682715019AA4E8759BFB9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +105,78 @@
 			children = (
 				849E61A71EDFD95D00B202F7 /* AppDelegate.swift */,
 				849E61A91EDFD95D00B202F7 /* ViewController.swift */,
+				849E61BD1EE12C1F00B202F7 /* GameController.swift */,
+				84BDE7E31EE91152009E7C74 /* AudioPlayerController.swift */,
+				84BDE7EB1EEF5535009E7C74 /* internetConnection.swift */,
 				849E61AB1EDFD95D00B202F7 /* Main.storyboard */,
+				84F14D351EE76A41000B1F6F /* HighScores */,
+				84F14D341EE76A18000B1F6F /* GuessFrequency */,
+				84F14D381EE76AA5000B1F6F /* EqGuess */,
 				849E61AE1EDFD95D00B202F7 /* Assets.xcassets */,
 				849E61B01EDFD95D00B202F7 /* LaunchScreen.storyboard */,
 				849E61B31EDFD95D00B202F7 /* Info.plist */,
+				849E61C61EE37C9A00B202F7 /* AudioHackers-Bridging-Header.h */,
+				849E61C91EE37E1000B202F7 /* AudioHackers.entitlements */,
+				84BDE7ED1EEFC88F009E7C74 /* GoogleService-Info.plist */,
+				84BDE7EF1EF1C8B8009E7C74 /* mainSong.wav */,
+				84B7F6231EE8ED3C00C355AA /* resources */,
+				84F14D401EE7909F000B1F6F /* RevealController */,
 			);
 			path = AudioHackers;
+			sourceTree = "<group>";
+		};
+		84B7F6231EE8ED3C00C355AA /* resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
+		84F14D341EE76A18000B1F6F /* GuessFrequency */ = {
+			isa = PBXGroup;
+			children = (
+				849E61B91EDFE11F00B202F7 /* GuessFrequencyViewController.swift */,
+				84F14D321EE73D55000B1F6F /* GFInstructionsViewController.swift */,
+			);
+			name = GuessFrequency;
+			sourceTree = "<group>";
+		};
+		84F14D351EE76A41000B1F6F /* HighScores */ = {
+			isa = PBXGroup;
+			children = (
+				849E61BF1EE2A35400B202F7 /* GuessFreqHighScoreViewController.swift */,
+				84BDE7E51EEA364A009E7C74 /* GuessEqHighScoreViewController.swift */,
+				849E61CC1EE4AEAF00B202F7 /* ProgressBarDraw.swift */,
+				84BDE7E71EEA43DE009E7C74 /* HighScoreTabBarController.swift */,
+			);
+			name = HighScores;
+			sourceTree = "<group>";
+		};
+		84F14D381EE76AA5000B1F6F /* EqGuess */ = {
+			isa = PBXGroup;
+			children = (
+				84F14D361EE76AA0000B1F6F /* EQGuessViewController.swift */,
+				84F14D3B1EE78EA7000B1F6F /* SpotifySearchViewController.swift */,
+				84BDE7E91EECDBFF009E7C74 /* EqInstructionsViewController.swift */,
+			);
+			name = EqGuess;
+			sourceTree = "<group>";
+		};
+		84F14D401EE7909F000B1F6F /* RevealController */ = {
+			isa = PBXGroup;
+			children = (
+				84F14D3D1EE7909A000B1F6F /* SWRevealViewController.h */,
+				84F14D3E1EE7909A000B1F6F /* SWRevealViewController.m */,
+			);
+			name = RevealController;
+			sourceTree = "<group>";
+		};
+		98B682715019AA4E8759BFB9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				907B4B4DBE415599DC893FC4 /* Pods_AudioHackers.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +186,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 849E61B61EDFD95D00B202F7 /* Build configuration list for PBXNativeTarget "AudioHackers" */;
 			buildPhases = (
+				CB681B497871C91453D283E9 /* [CP] Check Pods Manifest.lock */,
 				849E61A01EDFD95D00B202F7 /* Sources */,
 				849E61A11EDFD95D00B202F7 /* Frameworks */,
 				849E61A21EDFD95D00B202F7 /* Resources */,
+				2551FD27990B62EB1C1A320C /* [CP] Embed Pods Frameworks */,
+				DE31D06FB00F3FB0BE794B6C /* [CP] Copy Pods Resources */,
+				84EAF2051EF33D0500003A29 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -96,7 +215,14 @@
 				TargetAttributes = {
 					849E61A31EDFD95D00B202F7 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = BH8DFD6WR9;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -123,7 +249,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84BDE7F01EF1C8B8009E7C74 /* mainSong.wav in Resources */,
 				849E61B21EDFD95D00B202F7 /* LaunchScreen.storyboard in Resources */,
+				84BDE7EE1EEFC88F009E7C74 /* GoogleService-Info.plist in Resources */,
 				849E61AF1EDFD95D00B202F7 /* Assets.xcassets in Resources */,
 				849E61AD1EDFD95D00B202F7 /* Main.storyboard in Resources */,
 			);
@@ -131,13 +259,87 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2551FD27990B62EB1C1A320C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AudioHackers/Pods-AudioHackers-frameworks.sh\"\n\"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/AudioKit.framework/fix-framework.sh\"";
+			showEnvVarsInLog = 0;
+		};
+		84EAF2051EF33D0500003A29 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+		CB681B497871C91453D283E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DE31D06FB00F3FB0BE794B6C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AudioHackers/Pods-AudioHackers-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		849E61A01EDFD95D00B202F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F14D331EE73D55000B1F6F /* GFInstructionsViewController.swift in Sources */,
 				849E61AA1EDFD95D00B202F7 /* ViewController.swift in Sources */,
+				84BDE7EC1EEF5535009E7C74 /* internetConnection.swift in Sources */,
+				84F14D371EE76AA0000B1F6F /* EQGuessViewController.swift in Sources */,
+				84BDE7EA1EECDBFF009E7C74 /* EqInstructionsViewController.swift in Sources */,
+				84BDE7E41EE91152009E7C74 /* AudioPlayerController.swift in Sources */,
+				849E61C01EE2A35400B202F7 /* GuessFreqHighScoreViewController.swift in Sources */,
+				849E61BE1EE12C1F00B202F7 /* GameController.swift in Sources */,
 				849E61A81EDFD95D00B202F7 /* AppDelegate.swift in Sources */,
+				849E61BA1EDFE11F00B202F7 /* GuessFrequencyViewController.swift in Sources */,
+				84F14D3F1EE7909A000B1F6F /* SWRevealViewController.m in Sources */,
+				84F14D3C1EE78EA7000B1F6F /* SpotifySearchViewController.swift in Sources */,
+				849E61CD1EE4AEAF00B202F7 /* ProgressBarDraw.swift in Sources */,
+				84BDE7E81EEA43DE009E7C74 /* HighScoreTabBarController.swift in Sources */,
+				84BDE7E61EEA364A009E7C74 /* GuessEqHighScoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,24 +460,41 @@
 		};
 		849E61B71EDFD95D00B202F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC69A904FC0AB3E1DE0C274C /* Pods-AudioHackers.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AudioHackers/AudioHackers.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = BH8DFD6WR9;
 				INFOPLIST_FILE = AudioHackers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Rruais.AudioHackers;
+				PRODUCT_BUNDLE_IDENTIFIER = ruais.AudioHackers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "AudioHackers/AudioHackers-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		849E61B81EDFD95D00B202F7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29BF83AC7C26FD626B89CDF4 /* Pods-AudioHackers.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AudioHackers/AudioHackers.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = BH8DFD6WR9;
 				INFOPLIST_FILE = AudioHackers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Rruais.AudioHackers;
+				PRODUCT_BUNDLE_IDENTIFIER = ruais.AudioHackers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "AudioHackers/AudioHackers-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -299,6 +518,7 @@
 				849E61B81EDFD95D00B202F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
