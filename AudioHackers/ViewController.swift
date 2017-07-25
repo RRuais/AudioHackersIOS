@@ -16,6 +16,7 @@ struct googleUser {
 }
 
 var currentGoogleUser = googleUser.init(displayName: "", email: "", id: "")
+var isUserLoggedIn = false
 
 class ViewController: UIViewController, GIDSignInUIDelegate {
     
@@ -30,9 +31,20 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     @IBOutlet weak var highScoreBtn: UIBarButtonItem!
     @IBOutlet weak var guessEqLogo: UIButton!
     @IBOutlet weak var guessFreqLogo: UIButton!
+    @IBOutlet weak var adView: UIView!
+    
+    var bannerView: GADBannerView!
+    let request = GADRequest()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/6300978111"
+        bannerView.rootViewController = self
+        bannerView.load(request)
+        adView.addSubview(bannerView)
         
         // Setup Audio Notifications - Defaul to speaker
         AudioPlayerController.sharedInstance.setupNotifications()
@@ -49,6 +61,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         guessEqLogo.isHidden = true
         googleSignInBtn.isHidden = true
         gmailLbl.isHidden = true
+        
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -111,6 +124,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                 currentGoogleUser.email = (user?.email)!
                 currentGoogleUser.displayName = (user?.displayName)!
                 currentGoogleUser.id = (user?.uid)!
+                isUserLoggedIn = true
                 // Sign in buttons
                 self.gmailLbl.isHidden = true
                 self.googleSignInBtn.isHidden = true
@@ -118,17 +132,10 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                 self.welcomeUserLbl.isHidden = false
                 self.signOut.isEnabled = true
                 self.highScoreBtn.isEnabled = true
-                self.guessFrequencyBtn.isHidden = false
-                self.guessFrequencyBtn.isEnabled = true
-                self.GuessEqBtn.isHidden = false
-                self.GuessEqBtn.isEnabled = true
-                self.guessFrequencyLbl.isHidden = false
-                self.guessEqLbl.isHidden = false
-                self.guessFreqLogo.isHidden = false
-                self.guessEqLogo.isHidden = false
                 self.welcomeUserLbl.text = "Welcome \(currentGoogleUser.displayName)!"
 
             } else {
+                isUserLoggedIn = false
                 // Sign in buttons
                 self.gmailLbl.isHidden = false
                 self.googleSignInBtn.isHidden = false
@@ -136,15 +143,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                 self.welcomeUserLbl.isHidden = true
                 self.signOut.isEnabled = false
                 self.highScoreBtn.isEnabled = false
-                self.guessFrequencyBtn.isHidden = true
-                self.guessFrequencyBtn.isEnabled = false
-                self.GuessEqBtn.isHidden = true
-                self.GuessEqBtn.isEnabled = false
-                self.guessFrequencyLbl.isHidden = true
-                self.guessEqLbl.isHidden = true
-                self.guessFreqLogo.isHidden = true
-                self.guessEqLogo.isHidden = true
-            }
+                            }
         }
     }
 

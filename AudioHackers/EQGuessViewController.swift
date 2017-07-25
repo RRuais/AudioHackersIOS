@@ -15,7 +15,7 @@ var GuessEQmasterGameTime = 120
 var currentTrackPreview = String()
 var currentTrackURL: URL!
 
-class EQGuessViewController: UIViewController {
+class EQGuessViewController: UIViewController, SWRevealViewControllerDelegate {
     
     let gc = GameController()
     var gameTime = GuessEQmasterGameTime
@@ -50,24 +50,20 @@ class EQGuessViewController: UIViewController {
     @IBOutlet weak var startGameBtnLbl: UIButton!
     @IBOutlet weak var restartBtnLbl: UIBarButtonItem!
     @IBOutlet weak var playBtn: UIButton!
-    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var eqBtnLbl: UISwitch!
     @IBOutlet weak var addEqLbl: UILabel!
-    @IBOutlet weak var searchMusicBtnLbl: UIBarButtonItem!
     @IBOutlet weak var nextRoundBtnLbl: UIButton!
     @IBOutlet weak var infoBtnLbl: UIButton!
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+  
     
     let playImage = UIImage(named: "Play")
     let pauseImage = UIImage(named: "Pause")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Setup RevealController
-        if self.revealViewController() != nil {
-            menuButton.target = self.revealViewController()
-            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-//  self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
+        
+        revealViewController().delegate = self
         
         let pulseAnimation = CABasicAnimation(keyPath: "opacity")
         pulseAnimation.duration = 1
@@ -83,7 +79,6 @@ class EQGuessViewController: UIViewController {
             ofType: "wav")!)
         AudioPlayerController.sharedInstance.loadInitialTrack(url: firstTrack)
         startGameBtnLbl.isEnabled = true
-        startGameBtnLbl.isHidden = false
         oscillatorGainOutlet.isEnabled = true
         oscillatorGainOutlet.value = Float(AudioPlayerController.sharedInstance.akPlayer.volume)
         nextRoundBtnLbl.layer.cornerRadius = 20
@@ -96,9 +91,24 @@ class EQGuessViewController: UIViewController {
         volumeWarning()
     }
     
+
+    func revealController(_ revealController: SWRevealViewController!, didMoveTo position: FrontViewPosition) {
+        if itunesSearchisActive {
+            startGameBtnLbl.isEnabled = false
+            print("isEnable false")
+        } else {
+            startGameBtnLbl.isEnabled = true
+            print("isEnable true")
+        }
+
+    }
+    
+    
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
 
      @IBAction func playOscillator(_ sender: UIButton) {
         playPause()
@@ -127,31 +137,24 @@ class EQGuessViewController: UIViewController {
         }
     }
     
-    var initialTrackIsLoaded: Bool = false {
-        didSet {
-            if initialTrackIsLoaded == false {
-                self.startGameBtnLbl.isEnabled = false
-                self.startGameBtnLbl.isHidden = false
-            } else {
-                self.startGameBtnLbl.isEnabled = true
-                self.startGameBtnLbl.isHidden = false
-            }
-        }
-    }
-    
+
     func enableGameBtns() {
-        startGameBtnLbl.isEnabled = false
         startGameBtnLbl.isHidden = true
         // Game btns
-        playBtn.isEnabled = true
-        oscillatorGainOutlet.isEnabled = true
+        playBtn.isHidden = false
+        oscillatorGainOutlet.isHidden = false
+        eqBtnLbl.isHidden = false
         volumeTextLbl.isHidden = false
+        frequencyTextLbl.isHidden = false
+        frequencyLbl.isHidden = false
+        addEqLbl.isHidden = false
+        
+        // Answers Stack
         answer1.isEnabled = true
         answer2.isEnabled = true
         answer3.isEnabled = true
         answer4.isEnabled = true
         answer5.isEnabled = true
-        
         lowLbl.isEnabled = true
         lowMidLbl.isEnabled = true
         midLbl.isEnabled = true
@@ -163,25 +166,27 @@ class EQGuessViewController: UIViewController {
         freq2501Lbl.isEnabled = true
         freq7501Lbl.isEnabled = true
         
-        eqBtnLbl.isEnabled = true
-
         restartBtnLbl.isEnabled = true
         
     }
     
     func disableGameBtns() {
-        startGameBtnLbl.isEnabled = true
         startGameBtnLbl.isHidden = false
         // Game Btns
-        playBtn.isEnabled = false
-        oscillatorGainOutlet.isEnabled = false
+        playBtn.isHidden = true
+        oscillatorGainOutlet.isHidden = true
+        eqBtnLbl.isHidden = true
         volumeTextLbl.isHidden = true
+        frequencyTextLbl.isHidden = true
+        frequencyLbl.isHidden = true
+        addEqLbl.isHidden = true
+        
+        // Answers Stack
         answer1.isEnabled = false
         answer2.isEnabled = false
         answer3.isEnabled = false
         answer4.isEnabled = false
         answer5.isEnabled = false
-        
         lowLbl.isEnabled = false
         lowMidLbl.isEnabled = false
         midLbl.isEnabled = false
@@ -192,24 +197,33 @@ class EQGuessViewController: UIViewController {
         freq251Lbl.isEnabled = false
         freq2501Lbl.isEnabled = false
         freq7501Lbl.isEnabled = false
-        
-        eqBtnLbl.isEnabled = false
+    
         correctLbl.isHidden = true
-
         restartBtnLbl.isEnabled = false
         gc.gameRound = 0
         roundLbl.text = String(gc.gameRound)
         gameTime = GuessEQmasterGameTime
         gameTimelbl.text = String(gameTime)
         nextRoundBtnLbl.isHidden = true
+        // Setup RevealController
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+       
     }
     
+   
     @IBAction func startGameBtn(_ sender: Any) {
+        // Remove itunes search pan gesture
+        self.view.removeGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
         if AudioPlayerController.sharedInstance.isPlaying {
             AudioPlayerController.sharedInstance.playPause()
         }
         gameIsActive = true
-        searchMusicBtnLbl.isEnabled = false
+        menuButton.isEnabled = false
         infoBtnLbl.isEnabled = false
         eqBtnLbl.setOn(false, animated: true)
         AudioPlayerController.sharedInstance.stopEq()
@@ -289,29 +303,31 @@ class EQGuessViewController: UIViewController {
             
             // Retrieve and save high scores if connected to internet
             if Connectivity.isConnectedToInternet() {
-                gc.retrieveHighScores(path: "GuessEqHighScores", pathForDefaults: "currentEqHighScores")
-                if let value  = userDefaults.array(forKey: "currentEqHighScores") {
-                    let scores = value as! [[String : String]]
-                    var isGreater = false
-                    if Int(newScore.round) >= 5 {
-                        if scores.count >= 10 {
-                            for index in 0..<scores.count {
-                                let temp = scores[index]["percentage"]
-                                if Float(newScore.percentage) > Float(temp!)! {
-                                    isGreater = true
+                if isUserLoggedIn {
+                    gc.retrieveHighScores(path: "GuessEqHighScores", pathForDefaults: "currentEqHighScores")
+                    if let value  = userDefaults.array(forKey: "currentEqHighScores") {
+                        let scores = value as! [[String : String]]
+                        var isGreater = false
+                        if Int(newScore.round) >= 5 {
+                            if scores.count >= 10 {
+                                for index in 0..<scores.count {
+                                    let temp = scores[index]["percentage"]
+                                    if Float(newScore.percentage) > Float(temp!)! {
+                                        isGreater = true
+                                    }
                                 }
-                            }
-                            if isGreater == true {
-                                gc.saveHighScore(newScore: newScore, path: "GuessEqHighScores")
-                                let min = findMin(arr: scores)
-                                print("min       \(min)")
-                                let scoreToDelete = scores[min]
-                                gc.deleteScore(scoreToDelete: scoreToDelete, path: "GuessEqHighScores")
+                                if isGreater == true {
+                                    gc.saveHighScore(newScore: newScore, path: "GuessEqHighScores")
+                                    let min = findMin(arr: scores)
+                                    print("min       \(min)")
+                                    let scoreToDelete = scores[min]
+                                    gc.deleteScore(scoreToDelete: scoreToDelete, path: "GuessEqHighScores")
+                                } else {
+                                }
                             } else {
+                                gc.saveHighScore(newScore: newScore, path: "GuessEqHighScores")
+                                print("There are less than 10 scores: \(scores.count)")
                             }
-                        } else {
-                            gc.saveHighScore(newScore: newScore, path: "GuessEqHighScores")
-                            print("There are less than 10 scores: \(scores.count)")
                         }
                     }
                 }
@@ -322,7 +338,7 @@ class EQGuessViewController: UIViewController {
             gameOverAlertController = UIAlertController(title: alertTitle, message: message, preferredStyle: .actionSheet)
             let actionItem = UIAlertAction(title: "Start new game", style: .default) { [weak self]
                 action in
-                self?.searchMusicBtnLbl.isEnabled = true
+                self?.menuButton.isEnabled = true
                 self?.infoBtnLbl.isEnabled = true
                 self?.disableGameBtns()
                 self?.gameOverAlertIsActive = true
@@ -454,6 +470,7 @@ class EQGuessViewController: UIViewController {
             correctLbl.text = "Incorrect"
             correctLbl.textColor = UIColor.red
         }
+        
         gc.gameRound += 1
         nextRoundBtnLbl.isHidden = false
         answer1.isEnabled = false
@@ -481,7 +498,7 @@ class EQGuessViewController: UIViewController {
             action in
             self?.disableGameBtns()
             self?.gameIsActive = false
-            self?.searchMusicBtnLbl.isEnabled = true
+            self?.menuButton.isEnabled = true
             self?.infoBtnLbl.isEnabled = true
             self?.clearButtonBorders()
             
@@ -567,3 +584,5 @@ class EQGuessViewController: UIViewController {
     }
 
 }
+
+

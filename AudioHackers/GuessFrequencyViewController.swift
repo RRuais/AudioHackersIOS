@@ -9,6 +9,7 @@
 import UIKit
 import AudioKit
 import Firebase
+import Foundation
 
 var masterGameTime = 60
 
@@ -22,6 +23,16 @@ class GuessFrequencyViewController: UIViewController {
     var gameIsActive = false
     let userDefaults = Foundation.UserDefaults.standard
     
+    @IBOutlet weak var lowLbl: UILabel!
+    @IBOutlet weak var lowMidLbl: UILabel!
+    @IBOutlet weak var midLbl: UILabel!
+    @IBOutlet weak var highMidLbl: UILabel!
+    @IBOutlet weak var highLbl: UILabel!
+    @IBOutlet weak var freq20Lbl: UILabel!
+    @IBOutlet weak var freq101Lbl: UILabel!
+    @IBOutlet weak var freq251Lbl: UILabel!
+    @IBOutlet weak var freq2501Lbl: UILabel!
+    @IBOutlet weak var freq7501Lbl: UILabel!
     @IBOutlet weak var answer1: UIButton!
     @IBOutlet weak var answer2: UIButton!
     @IBOutlet weak var answer3: UIButton!
@@ -31,8 +42,7 @@ class GuessFrequencyViewController: UIViewController {
     @IBOutlet weak var gameTimelbl: UILabel!
     @IBOutlet weak var frequencyLbl: UILabel!
     @IBOutlet weak var frequencyTextLbl: UILabel!
-    @IBOutlet weak var correctAnswerLbl: UILabel!
-    @IBOutlet weak var correntAnswerTextLbl: UILabel!
+
     @IBOutlet weak var correctLbl: UILabel!
     @IBOutlet weak var oscillatorGainOutlet: UISlider!
     @IBOutlet weak var startGameBtnLbl: UIButton!
@@ -41,6 +51,7 @@ class GuessFrequencyViewController: UIViewController {
     @IBOutlet weak var infoBtnLbl: UIButton!
     @IBOutlet weak var oscOnOffLbl: UILabel!
     @IBOutlet weak var oscVolumeLbl: UILabel!
+    @IBOutlet weak var nextRoundBtnLbl: UIButton!
     
     let playImage = UIImage(named: "Play")
     let pauseImage = UIImage(named: "Pause")
@@ -49,14 +60,24 @@ class GuessFrequencyViewController: UIViewController {
         super.viewDidLoad()
         setupAudioEnv()
         disableGameBtns()
+        nextRoundBtnLbl.layer.cornerRadius = 20
+        nextRoundBtnLbl.titleEdgeInsets.left = 10
+//        hideLayoutConsoleWarnings()
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
+    func hideLayoutConsoleWarnings() {
+        //Hide Autolayout Warning
+        Foundation.UserDefaults.standard.setValue(false, forKey:"_UIConstraintBasedLayoutLogUnsatisfiable")
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
+        playBtn.isHidden = true
         volumeWarning()
+        // Start game btn animation
         let pulseAnimation = CABasicAnimation(keyPath: "opacity")
         pulseAnimation.duration = 1
         pulseAnimation.fromValue = 0.4
@@ -65,82 +86,97 @@ class GuessFrequencyViewController: UIViewController {
         pulseAnimation.autoreverses = true
         pulseAnimation.repeatCount = Float.greatestFiniteMagnitude
         startGameBtnLbl.layer.add(pulseAnimation, forKey: "animateOpacity")
-
     }
     
-    func enableGameBtns() {
-        // Start Btn
-        startGameBtnLbl.isEnabled = false
-        startGameBtnLbl.isHidden = true
-        // Game btns
-        playBtn.isEnabled = true
-        oscillatorGainOutlet.isEnabled = true
+    func enableAnswers() {
         answer1.isEnabled = true
         answer2.isEnabled = true
         answer3.isEnabled = true
         answer4.isEnabled = true
         answer5.isEnabled = true
-        oscOnOffLbl.isHidden = true
-        oscVolumeLbl.isHidden = true
-        
-        correntAnswerTextLbl.isHidden = false
-        frequencyTextLbl.isHidden = false
-        
-        restartBtnLbl.isEnabled = true
-        
+        lowLbl.isEnabled = true
+        lowMidLbl.isEnabled = true
+        midLbl.isEnabled = true
+        highMidLbl.isEnabled = true
+        highLbl.isEnabled = true
+        freq20Lbl.isEnabled = true
+        freq101Lbl.isEnabled = true
+        freq251Lbl.isEnabled = true
+        freq2501Lbl.isEnabled = true
+        freq7501Lbl.isEnabled = true
     }
     
-    func disableGameBtns() {
-        // Start Btn
-        startGameBtnLbl.isEnabled = true
-        startGameBtnLbl.isHidden = false
-        // Game Btns
-        playBtn.isEnabled = false
-        oscillatorGainOutlet.isEnabled = false
+    func disableAnswers() {
         answer1.isEnabled = false
         answer2.isEnabled = false
         answer3.isEnabled = false
         answer4.isEnabled = false
         answer5.isEnabled = false
+        lowLbl.isEnabled = false
+        lowMidLbl.isEnabled = false
+        midLbl.isEnabled = false
+        highMidLbl.isEnabled = false
+        highLbl.isEnabled = false
+        freq20Lbl.isEnabled = false
+        freq101Lbl.isEnabled = false
+        freq251Lbl.isEnabled = false
+        freq2501Lbl.isEnabled = false
+        freq7501Lbl.isEnabled = false
+    }
+    
+    func enableGameBtns() {
+        print("Enable Game Buttons")
+        startGameBtnLbl.isHidden = true
+        enableAnswers()
+        playBtn.isHidden = false
+        oscillatorGainOutlet.isHidden = false
+        oscOnOffLbl.isHidden = false
+        oscVolumeLbl.isHidden = false
+        frequencyLbl.isHidden = false
+        frequencyTextLbl.isHidden = false
+        restartBtnLbl.isEnabled = true
+    }
+    
+    func disableGameBtns() {
+        print("Disable Game Buttons")
+        startGameBtnLbl.isHidden = false
+        disableAnswers()
+        oscillatorGainOutlet.isHidden = true
         oscOnOffLbl.isHidden = true
         oscVolumeLbl.isHidden = true
-        
-        correctAnswerLbl.isHidden = true
-        correctLbl.isHidden = true
         frequencyLbl.isHidden = true
-        correntAnswerTextLbl.isHidden = true
         frequencyTextLbl.isHidden = true
-        
         restartBtnLbl.isEnabled = false
+        // Reset game variables
         gc.gameRound = 0
         roundLbl.text = String(gc.gameRound)
         gameTime = masterGameTime
         gameTimelbl.text = String(gameTime)
-        
+        nextRoundBtnLbl.isHidden = true
+        correctLbl.isHidden = true
     }
 
     func setupAudioEnv() {
         AudioPlayerController.sharedInstance.setupGuessFreqAudioEnv()
         oscillatorGainOutlet.value = Float(AudioPlayerController.sharedInstance.oscillator.amplitude)
-
     }
 
-    func startNewRound() {
-        roundLbl.text = String(gc.gameRound)
-        gc.currentFrequency = gc.getRandomFrequency()
-        AudioPlayerController.sharedInstance.oscillator.frequency = Double(gc.currentFrequency)
-        play()
+    func clearButtonBorders() {
+        let answerButtonArray = [answer1, answer2, answer3, answer4, answer5]
+        for i in 0..<answerButtonArray.count {
+            answerButtonArray[i]?.layer.borderWidth = 0
+            answerButtonArray[i]?.layer.borderColor = UIColor.black.cgColor
+        }
     }
     
- 
     @IBAction func startGameBtn(_ sender: Any) {
-        gameIsActive = true
         infoBtnLbl.isEnabled = false
         enableGameBtns()
         startGame()
     }
-
+    
     func startGame() {
+        gameIsActive = true
         // Reset game variables
         gc.correctPercentage = 0
         gc.gameRound = 0
@@ -155,6 +191,22 @@ class GuessFrequencyViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(GuessFrequencyViewController.counter), userInfo: nil, repeats: true)
         startNewRound()
     }
+
+    
+    @IBAction func nextRoundBtnAction(_ sender: Any) {
+        clearButtonBorders()
+        nextRoundBtnLbl.isHidden = true
+        correctLbl.isHidden = true
+        startNewRound()
+    }
+    
+    func startNewRound() {
+        enableAnswers()
+        roundLbl.text = String(gc.gameRound)
+        gc.currentFrequency = gc.getRandomFrequency()
+        AudioPlayerController.sharedInstance.oscillator.frequency = Double(gc.currentFrequency)
+        play()
+    }
     
     func counter() {
         gameTime -= 1
@@ -167,32 +219,34 @@ class GuessFrequencyViewController: UIViewController {
             // Update Percentage
             gc.correctPercentage = calculatePercentage(total: gc.gameRound, correct: gc.numberCorrect)
             let newScore = Score.init(numberCorrect: gc.numberCorrect, numberIncorrect: gc.numberIncorrect, percentage: gc.correctPercentage, round: gc.gameRound, userId: "", createdAt: "")
-            
+             
             // Retrieve and save high scores if connected to internet
             if Connectivity.isConnectedToInternet() {
-                gc.retrieveHighScores(path: "GuessFreqHighScores", pathForDefaults: "currentFreqHighScores")
-                if let value  = userDefaults.array(forKey: "currentFreqHighScores") {
-                        let scores = value as! [[String : String]]
-                        var isGreater = false
-                    if Int(newScore.round) >= 10 {
-                        if scores.count >= 10 {
-                            for index in 0..<scores.count {
-                                let temp = scores[index]["percentage"]
-                                if Float(newScore.percentage) > Float(temp!)! {
-                                    isGreater = true
+                if isUserLoggedIn {
+                    gc.retrieveHighScores(path: "GuessFreqHighScores", pathForDefaults: "currentFreqHighScores")
+                    if let value  = userDefaults.array(forKey: "currentFreqHighScores") {
+                            let scores = value as! [[String : String]]
+                            var isGreater = false
+                        if Int(newScore.round) >= 10 {
+                            if scores.count >= 10 {
+                                for index in 0..<scores.count {
+                                    let temp = scores[index]["percentage"]
+                                    if Float(newScore.percentage) > Float(temp!)! {
+                                        isGreater = true
+                                    }
                                 }
-                            }
-                            if isGreater == true {
-                                gc.saveHighScore(newScore: newScore, path: "GuessFreqHighScores")
-                                let min = findMin(arr: scores)
-                                print("min       \(min)")
-                                let scoreToDelete = scores[min]
-                                gc.deleteScore(scoreToDelete: scoreToDelete, path: "GuessFreqHighScores")
+                                if isGreater == true {
+                                    gc.saveHighScore(newScore: newScore, path: "GuessFreqHighScores")
+                                    let min = findMin(arr: scores)
+                                    print("min       \(min)")
+                                    let scoreToDelete = scores[min]
+                                    gc.deleteScore(scoreToDelete: scoreToDelete, path: "GuessFreqHighScores")
+                                } else {
+                                }
                             } else {
+                                gc.saveHighScore(newScore: newScore, path: "GuessFreqHighScores")
+                                print("There are less than 10 scores: \(scores.count)")
                             }
-                        } else {
-                            gc.saveHighScore(newScore: newScore, path: "GuessFreqHighScores")
-                            print("There are less than 10 scores: \(scores.count)")
                         }
                     }
                 }
@@ -204,6 +258,7 @@ class GuessFrequencyViewController: UIViewController {
             let actionItem = UIAlertAction(title: "Start new game", style: .default) { [weak self]
                 action in
                 self?.disableGameBtns()
+                self?.playBtn.isHidden = true
                 self?.infoBtnLbl.isEnabled = true
                 self?.gameOverAlertIsActive = false
                 self?.gameIsActive = false
@@ -250,40 +305,61 @@ class GuessFrequencyViewController: UIViewController {
             if gc.frequencyRanges[0].contains(gc.currentFrequency) {
                 gc.answerIndex = 0
                 gc.isCorrect = true
+                answer1.layer.borderWidth = 1
+                answer1.layer.borderColor = UIColor.green.cgColor
             } else {
                 gc.answerIndex = 0
                 gc.isCorrect = false
+                answer1.layer.borderWidth = 1
+                answer1.layer.borderColor = UIColor.red.cgColor
             }
         case 2:
             if gc.frequencyRanges[1].contains(gc.currentFrequency) {
                 gc.answerIndex = 1
                 gc.isCorrect = true
+                answer2.layer.borderWidth = 1
+                answer2.layer.borderColor = UIColor.green.cgColor
             } else {
                 gc.answerIndex = 1
-                gc.isCorrect = false            }
+                gc.isCorrect = false
+                answer2.layer.borderWidth = 1
+                answer2.layer.borderColor = UIColor.red.cgColor
+            }
         case 3:
             if gc.frequencyRanges[2].contains(gc.currentFrequency) {
                 gc.answerIndex = 2
                 gc.isCorrect = true
+                answer3.layer.borderWidth = 1
+                answer3.layer.borderColor = UIColor.green.cgColor
             } else {
                 gc.answerIndex = 2
                 gc.isCorrect = false
+                answer3.layer.borderWidth = 1
+                answer3.layer.borderColor = UIColor.red.cgColor
             }
         case 4:
             if gc.frequencyRanges[3].contains(gc.currentFrequency) {
                 gc.answerIndex = 3
                 gc.isCorrect = true
+                answer4.layer.borderWidth = 1
+                answer4.layer.borderColor = UIColor.green.cgColor
             } else {
                 gc.answerIndex = 3
                 gc.isCorrect = false
+                answer4.layer.borderWidth = 1
+                answer4.layer.borderColor = UIColor.red.cgColor
             }
         case 5:
             if gc.frequencyRanges[4].contains(gc.currentFrequency) {
                 gc.answerIndex = 4
                 gc.isCorrect = true
+                answer5.layer.borderWidth = 1
+                answer5.layer.borderColor = UIColor.green.cgColor
             } else {
                 gc.answerIndex = 4
                 gc.isCorrect = false
+                answer5.layer.borderWidth = 1
+                answer5.layer.borderColor = UIColor.red.cgColor
             }
         default:
             return
@@ -293,7 +369,15 @@ class GuessFrequencyViewController: UIViewController {
         for i in 0..<gc.frequencyRanges.count {
             if gc.frequencyRanges[i].contains(gc.currentFrequency) {
                 gc.correctAnswer = gc.freqRangeStrings[i]
+                gc.correctAnswerIndex = i
             }
+        }
+        // Set correct btn border color
+        let answerButtonArray = [answer1, answer2, answer3, answer4, answer5]
+        if !gc.isCorrect {
+            let correctButton = answerButtonArray[gc.correctAnswerIndex]
+            correctButton?.layer.borderWidth = 1
+            correctButton?.layer.borderColor = UIColor.green.cgColor
         }
         
         // Update Score and Labels
@@ -302,20 +386,16 @@ class GuessFrequencyViewController: UIViewController {
            
         } else {
             gc.numberIncorrect += 1
-            
         }
         
         let frequency = String(gc.currentFrequency)
 //        let yourGuess = String(gc.freqRangeStrings[gc.answerIndex])
-        let correctAnswer = gc.correctAnswer
+//        let correctAnswer = gc.correctAnswer
         
         correctLbl.isHidden = false
         frequencyLbl.text = frequency
-        correctAnswerLbl.text = correctAnswer
-        correctAnswerLbl.isHidden = false
-        frequencyLbl.isHidden = false
-        
-        
+
+        // Set correct lbl
         if gc.isCorrect {
             correctLbl.text = "Correct!"
             correctLbl.textColor = UIColor.green
@@ -325,17 +405,16 @@ class GuessFrequencyViewController: UIViewController {
         }
         
         gc.gameRound += 1
-        startNewRound()
+        nextRoundBtnLbl.isHidden = false
+        disableAnswers()
     }
     
     @IBAction func oscillatorGainSlider(_ sender: UISlider) {
-        
         sender.maximumValue = 0.8
         sender.minimumValue = 0.0
         AudioPlayerController.sharedInstance.oscillator.amplitude = Double(sender.value)
     }
 
-    
     @IBAction func restart(_ sender: Any) {
         let actionTitle = "Are you sure you want to restart?"
         let actionMessage = "Your current game data will be lost."
@@ -343,6 +422,7 @@ class GuessFrequencyViewController: UIViewController {
         let actionItem = UIAlertAction(title: "Restart", style: .destructive) { [weak self]
             action in
             self?.disableGameBtns()
+            self?.playBtn.isHidden = true
             self?.gameIsActive = false
             self?.infoBtnLbl.isEnabled = true
         }

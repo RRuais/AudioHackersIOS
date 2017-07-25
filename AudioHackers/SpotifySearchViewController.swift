@@ -20,6 +20,7 @@ struct Track {
     var previewURL: String!
 }
 
+var itunesSearchisActive = Bool()
 
 class SpotifySearchViewController: UIViewController, UISearchBarDelegate, UITextViewDelegate {
 
@@ -41,7 +42,7 @@ class SpotifySearchViewController: UIViewController, UISearchBarDelegate, UIText
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         defaultTrackLbl.layer.cornerRadius = 7
         
         tableView.delegate = self
@@ -59,6 +60,8 @@ class SpotifySearchViewController: UIViewController, UISearchBarDelegate, UIText
     
     override func viewDidAppear(_ animated: Bool) {
         
+        itunesSearchisActive = true
+        
         indicatorView.isHidden = true
         indicator.isHidden = true
         connectionLbl.isHidden = true
@@ -69,6 +72,10 @@ class SpotifySearchViewController: UIViewController, UISearchBarDelegate, UIText
             playPauseBtnLbl.setImage(playImage, for: .normal)
         }
         checkInternetConnection()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        itunesSearchisActive = false
     }
     
     override var prefersStatusBarHidden: Bool {

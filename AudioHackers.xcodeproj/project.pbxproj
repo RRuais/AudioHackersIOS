@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8478CE941F0CB6D5003201A1 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8478CE931F0CB6D5003201A1 /* Animations.swift */; };
 		849E61A81EDFD95D00B202F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E61A71EDFD95D00B202F7 /* AppDelegate.swift */; };
 		849E61AA1EDFD95D00B202F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E61A91EDFD95D00B202F7 /* ViewController.swift */; };
 		849E61AD1EDFD95D00B202F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849E61AB1EDFD95D00B202F7 /* Main.storyboard */; };
@@ -32,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		29BF83AC7C26FD626B89CDF4 /* Pods-AudioHackers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioHackers.release.xcconfig"; path = "Pods/Target Support Files/Pods-AudioHackers/Pods-AudioHackers.release.xcconfig"; sourceTree = "<group>"; };
+		84731C531F19AB99003E86FC /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		8478CE931F0CB6D5003201A1 /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		849E61A41EDFD95D00B202F7 /* AudioHackers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioHackers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849E61A71EDFD95D00B202F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849E61A91EDFD95D00B202F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +111,7 @@
 				849E61BD1EE12C1F00B202F7 /* GameController.swift */,
 				84BDE7E31EE91152009E7C74 /* AudioPlayerController.swift */,
 				84BDE7EB1EEF5535009E7C74 /* internetConnection.swift */,
+				8478CE931F0CB6D5003201A1 /* Animations.swift */,
 				849E61AB1EDFD95D00B202F7 /* Main.storyboard */,
 				84F14D351EE76A41000B1F6F /* HighScores */,
 				84F14D341EE76A18000B1F6F /* GuessFrequency */,
@@ -174,6 +178,7 @@
 		98B682715019AA4E8759BFB9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84731C531F19AB99003E86FC /* iAd.framework */,
 				907B4B4DBE415599DC893FC4 /* Pods_AudioHackers.framework */,
 			);
 			name = Frameworks;
@@ -272,7 +277,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AudioHackers/Pods-AudioHackers-frameworks.sh\"\n\"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/AudioKit.framework/fix-framework.sh\"";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AudioHackers/Pods-AudioHackers-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		84EAF2051EF33D0500003A29 /* ShellScript */ = {
@@ -286,7 +291,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
+			shellScript = "\"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/AudioKit.framework/fix-framework.sh\"\n";
 		};
 		CB681B497871C91453D283E9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -339,6 +344,7 @@
 				84F14D3C1EE78EA7000B1F6F /* SpotifySearchViewController.swift in Sources */,
 				849E61CD1EE4AEAF00B202F7 /* ProgressBarDraw.swift in Sources */,
 				84BDE7E81EEA43DE009E7C74 /* HighScoreTabBarController.swift in Sources */,
+				8478CE941F0CB6D5003201A1 /* Animations.swift in Sources */,
 				84BDE7E61EEA364A009E7C74 /* GuessEqHighScoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

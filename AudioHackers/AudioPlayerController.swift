@@ -131,11 +131,10 @@ class AudioPlayerController {
     
     func setupGuessFreqAudioEnv() {
         oscillator.amplitude = 0.4
-        envelope = AKAmplitudeEnvelope.init(oscillator, attackDuration: 1.0, decayDuration: 1.0, sustainLevel: 1.0, releaseDuration: 1.0)
+//        envelope = AKAmplitudeEnvelope.init(oscillator, attackDuration: 1.0, decayDuration: 1.0, sustainLevel: 1.0, releaseDuration: 1.0)
         oscillator.rampTime = 0.1
-        AudioKit.output = envelope
+        AudioKit.output = oscillator
         AudioKit.start()
-        envelope.start()
         
     }
     

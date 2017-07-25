@@ -20,11 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         // Firebase
         FIRApp.configure()
-        FIRDatabase.database().persistenceEnabled = true
+        FIRDatabase.database().persistenceEnabled = false
         FIRDatabase.database().reference(withPath: "GuessFreqHighScores").keepSynced(true)
         FIRDatabase.database().reference(withPath: "GuessEqHighScores").keepSynced(true)
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
+        GADMobileAds.configure(withApplicationID: "pub-5010033440987375")
         
         // TabBar
          UITabBar.appearance().barTintColor = UIColor.clear

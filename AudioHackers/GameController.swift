@@ -69,7 +69,11 @@ class GameController {
         let ref = FIRDatabase.database().reference(withPath: path).child(newScore.userId)
         
         let scoreRef = ref.child("\(date)")
-        scoreRef.setValue(scoreToSave)
+        scoreRef.setValue(scoreToSave) { (error, ref) -> Void in
+            print(error.debugDescription)
+            print(error?.localizedDescription as Any)
+            
+        }
         
     }
     

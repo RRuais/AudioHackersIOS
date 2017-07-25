@@ -23,9 +23,20 @@ class GuessEqHighScoreViewController: UIViewController {
     @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var connectionLbl: UILabel!
+    @IBOutlet weak var adView: UIView!
+    
+    var bannerView: GADBannerView!
+    let request = GADRequest()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+            
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/6300978111"
+        bannerView.rootViewController = self
+        bannerView.load(request)
+        adView.addSubview(bannerView)
+
         
         tableView.delegate = self
         tableView.dataSource = self
